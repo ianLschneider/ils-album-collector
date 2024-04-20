@@ -2,13 +2,14 @@
 <body>
     <%- include ('./partials/header.ejs', {showNav: false, className: "index", username: username}) %>
     <main class="container index">
+        <a class="add-btn" href="/albums/add">Add Album</a>
         <section class="limit albums">
             <% if( albums.length ){
                 for(let album in albums){ %>
                     <div class="album">
                         <div class="card-top">
                             <a href="/albums/<%=albums[album].id%>">
-                                <div class="album-img" style="background-image: url('<%=  albums[album].image.path %>');"></div>
+                                <div class="album-img" style="background-image: url('/images/albums/<%=  albums[album].coverImage.path %>');" alt="<%= albums[album].coverImage.alt %>"></div>
                                 <h2><%= albums[album].name %></h2>
                             </a>
                         </div>

@@ -42,7 +42,7 @@ const isAuthenticated = (req, res, next) => {
 
 const usersController = require('./controllers/users.js')
 app.use('/users', usersController)
-app.use(isAuthenticated)
+//app.use(isAuthenticated)
 
 
 //CONTROLLERS

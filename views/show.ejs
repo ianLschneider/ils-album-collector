@@ -8,7 +8,7 @@
     <main class="limit container show">
         <div class="album">
             <div class="card-top">
-                <img class="album-img" src="<%= album.image.path %>">
+                <img class="album-img" src="/images/albums/<%= album.coverImage.path %>" alt="<%= album.coverImage.alt %>">
                 <h2><%= album.name %></h2>
                 <p><%= album.description %></p>
                 

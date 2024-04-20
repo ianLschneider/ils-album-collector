@@ -4,16 +4,16 @@
             <nav>
                 <a href="/albums/">&lt; Back</a>
             </nav>
-            <h1>Edit Album</h1>
+            <h2>Edit Album</h2>
         </header>
-        <main>
-            <form action="/albums/<%= album.id %>?_method=PUT" method="POST">
+        <main class="limit form-container"> 
+            <form action="/albums/<%= album.id %>?_method=PUT"  method="POST">
                 
-                <!-- image:  -->
-                Name: <input type="text" name="name" /><br/>
-                Description: <input type="text" name="description" /><br/>
-                Band: <input type="text" name="band" /><br/> 
-                Rating: <input type="number" name="band" /><br/>
+                <label for="coverImage">Image:</label>          <input type="file"   id="coverImage"  name="coverImage"/>
+                <label for="name"> Name:</label>                <input type="text"   id="name"        name="name"        value="<%= album.name %>" />
+                <label for="description">Description:</label>   <input type="text"   id="description" name="description" value="<%= album.description %>" />
+                <label for="band">Band:</label>                 <input type="text"   id="band"        name="band"        value="<%= album.band %>" /> 
+                <label for="rating">Rating:</label>             <input type="number" id="rating"      name="rating"      value="<%= album.rating %>" />
 
                 <input type="submit" name="" value="Save"/>
             </form>

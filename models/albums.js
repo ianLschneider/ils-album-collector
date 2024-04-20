@@ -4,7 +4,8 @@ const albumSchema = new mongoose.Schema({
     name: { type: String, required: true},
     description: { type: String },
     band: { type: String },
-    image: {
+    rating: { type: Number },
+    coverImage: {
         path: { type: String } ,
         alt: { type: String }
     }

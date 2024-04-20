@@ -40,6 +40,42 @@ header nav{
     border-bottom: 1px solid #ccc;
 }
 
+header.edit nav,
+header.show nav,
+header.add nav{
+    text-align: left;
+}
+
+header.edit nav a, 
+header.show nav a,
+header.add nav a{
+    text-decoration: none;
+}
+
+header.edit h2, 
+header.add h2{
+    margin: 20px 0;
+}
+
+.form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.form-container form input{
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 3px 0 20px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 header h1{
     padding: 20px 0;
     background-color: #51ABB2;
@@ -134,6 +170,14 @@ header.index h1 img{
     margin: 20px auto 0;
 }
 
+.container.index{
+    text-align: center;
+}
+
+.container.index .add-btn{
+   display: inline-block;
+   margin: 20px;
+}
 .album h2{
     padding-top: 20px;
     font-size: 1rem;

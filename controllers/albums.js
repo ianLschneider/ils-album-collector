@@ -2,6 +2,20 @@ const express = require('express')
 const router = express.Router()
 const Albums = require('../models/albums.js')
 
+const multer  = require('multer')
+const upload = multer({ 
+  dest: 'public/images/albums/',
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+    }
+    //https://stackoverflow.com/questions/60408575/how-to-validate-file-extension-with-multer-middleware
+}})
+
+
 router.get('/', async (req, res)=>{
     const foundAlbums = await Albums.find()
     console.log("req.session.username",  req.session.currentUser)
@@ -13,6 +27,7 @@ router.get('/', async (req, res)=>{
 })
 
 router.get('/add', async (req, res)=>{
+    
     res.render('newAlbum.ejs', {
         pageTitle: "Album Collector"
     })
@@ -21,13 +36,14 @@ router.get('/add', async (req, res)=>{
 router.get('/seed', async (req, res)=>{
     const p = await Albums.create([
         {
-            name: "album 1",
-            band: "band 1",
-            description: "Band 1 Album 1",
+            name: "Indigo Girls",
+            band: "Indigo Girls",
+            description: "The Indigo Girls' self-titled album",
             rating: "5",
-            image: {
-                path: "/images/albums/indigo-girls/indigo-girls.jpg",
-                alt: "Indigo Girls"
+            coverImage: {
+                path: "indigo-girls.jpg",
+                alt: "Indigo Girls",
+                originalname: "indigo-girls.jpg" 
             }
         }
     ])
@@ -50,19 +66,33 @@ router.get('/:id', async (req, res)=>{
     })
 })
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('coverImage'), async (req, res) => {
     try {
+        console.log("req",req)
+        if(req.file){
+            req.body.coverImage = {
+                path: req.file.filename,
+                alt: req.file.originalname
+            }
+        }
         const newAlbum = await Albums.create(req.body)
+
+        console.log("req.file:",req.file)
+
         res.redirect('/albums')
     } catch (err) {
         console.log("ERROR ADDING PRODUCT: ", err)
-        res.status(500).send(error)
+        res.status(500).send(err)
     }
 })
 
 
 router.put('/:id', async(req, res)=>{
     try {
+        if(req.file){
+            req.body.coverImage.path = req.file.filename;
+            req.body.coverImage.alt  = req.file.originalname;
+        }
         const updatedAlbum = await Albums.findByIdAndUpdate(req.params.id, req.body, {new: true})
         console.log("put", updatedAlbum)
         res.redirect(`/albums/${req.params.id}`)

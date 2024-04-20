@@ -1,19 +1,21 @@
 <%- include ('./partials/head.ejs') %>
 <body>
-    <header>
+    <header class="add">
         <nav>
             <a href="/albums/">&lt; Back</a>
         </nav>
+        <h2>Add New Album</h2>
     </header>
-    <main>
-        <form action="/albums/" method="POST">
+    <main class="limit form-container">
+        <form action="/albums/" enctype="multipart/form-data" method="POST">
 
-            <!-- image:  -->
-            Name: <input type="text" name="name" /><br/>
-            Description: <input type="text" name="description" /><br/>
-            Band: <input type="text" name="band" /><br/>
-            Rating: <input type="number" name="band" /><br/>
-
+    
+            <label for="coverImage">Image:</label>          <input type="file" id="coverImage" name="coverImage" />
+            <label for="name"> Name:</label>                <input type="text" id="name" name="name" required />
+            <label for="description">Description:</label>   <input type="text" id="description" name="description" />
+            <label for="band">Band:</label>                 <input type="text" id="band" name="band" />
+            <label for="rating">Rating:</label>             <input type="number" id="rating" name="rating" />
+            
             <input type="submit" name="" value="Add Album"/>
             
         </form>
