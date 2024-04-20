@@ -3,11 +3,6 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
 
-router.get('/', (req, res)=>{
-    res.render('newUser.ejs', {
-        pageTitle: "Album Collector | Add User"
-    })
-})
 
 
 router.get('/login', (req, res)=>{
@@ -15,18 +10,6 @@ router.get('/login', (req, res)=>{
         pageTitle: "Album Collector | Login"
     })
 })
-
-router.post('/', async (req, res)=>{   
-    try {
-        req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-        const newUser = await User.create(req.body)
-        res.redirect('/login')
-    } catch (err) {
-        console.log(err)
-        res.status(500).send('Please try a differnet username or password')
-    }
-})
-
 
 router.post('/login', async (req, res)=>{
     
