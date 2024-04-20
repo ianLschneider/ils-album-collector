@@ -87,11 +87,13 @@ router.post('/', upload.single('coverImage'), async (req, res) => {
 })
 
 
-router.put('/:id', async(req, res)=>{
+router.put('/:id', upload.single('coverImage'), async(req, res)=>{
     try {
         if(req.file){
-            req.body.coverImage.path = req.file.filename;
-            req.body.coverImage.alt  = req.file.originalname;
+            req.body.coverImage = {
+                path: req.file.filename,
+                alt: req.file.originalname
+            }
         }
         const updatedAlbum = await Albums.findByIdAndUpdate(req.params.id, req.body, {new: true})
         console.log("put", updatedAlbum)
