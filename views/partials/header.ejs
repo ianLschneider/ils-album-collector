@@ -2,7 +2,11 @@
     
     <nav>
         <% if(showNav){ %>
-            <a href="/users/login">Login</a>
+            <% if(!loggedIn) { %>
+                <a href="/users/login">Login</a>
+            <% }else{%>
+                <a href="/albums/">Albums</a>
+            <% }%>
          <% }else{%>
             <p>Welcome, <%= username %></p>
         <% }%>

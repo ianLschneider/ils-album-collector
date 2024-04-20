@@ -1,6 +1,6 @@
 <%- include ('./partials/head.ejs') %>
     <body>
-        <header class="edit">
+        <header class="page edit">
             <nav>
                 <a href="/albums/">&lt; Back</a>
             </nav>
@@ -8,12 +8,21 @@
         </header>
         <main class="limit form-container"> 
             <form action="/albums/<%= album.id %>?_method=PUT"  enctype="multipart/form-data"  method="POST">
-                
-                <label for="coverImage">Image:</label>          <input type="file"   id="coverImage"  name="coverImage"/>
-                <label for="name"> Name:</label>                <input type="text"   id="name"        name="name"        value="<%= album.name %>" />
-                <label for="description">Description:</label>   <input type="text"   id="description" name="description" value="<%= album.description %>" />
-                <label for="band">Band:</label>                 <input type="text"   id="band"        name="band"        value="<%= album.band %>" /> 
-                <label for="rating">Rating:</label>             <input type="number" id="rating"      name="rating"      value="<%= album.rating %>" />
+
+                <label for="coverImage">Image:</label>          
+                <input type="file"   id="coverImage"  name="coverImage"/>
+
+                <label for="name"> Name:</label>                
+                <input type="text"   id="name"        name="name"        value="<%= album.name %>" />
+
+                <label for="description">Description:</label>   
+                <input type="text"   id="description" name="description" value="<%= album.description %>" />
+
+                <label for="band">Band:</label>                 
+                <input type="text"   id="band"        name="band"        value="<%= album.band %>" /> 
+
+                <label for="rating">Rating:</label>            
+                <input type="number" id="rating"      name="rating"      value="<%= album.rating %>" />
 
                 <input type="submit" name="" value="Save"/>
             </form>

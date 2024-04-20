@@ -1,11 +1,14 @@
 <%- include ('./partials/head.ejs') %>
 <body>
-    <h1>Login</h1>
- 
-    <form action="/users/login" method="POST">
-        <input type="text" placeholder="Username" name="username">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="Next">
-    </form>
+    <header class="page no-nav login">
+        <h2>Login</h2>
+    </header>
+    <main class="limit form-container"> 
+        <form action="/users/login" method="POST">
+            <input type="text" placeholder="Username" name="username">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="Next">
+        </form>
+    </main>
 </body>
 </html>

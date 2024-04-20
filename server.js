@@ -68,8 +68,10 @@ db.on('disconnectedf', ()=>{
 
 //ROUTES
 app.get('/', async (req, res)=>{
+    let isloggedIn = req.session.currentUser ? true : false
     res.render("frontPage.ejs", {
-        pageTitle: "Album Collector"
+        pageTitle: "Album Collector",
+        loggedIn: isloggedIn
     })
 })
 
