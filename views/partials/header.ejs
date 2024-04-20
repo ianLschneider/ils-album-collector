@@ -1,0 +1,12 @@
+<header class="<%= className %>">
+    
+    <nav>
+        <% if(showNav){ %>
+            <a href="/users/login">Login</a>
+         <% }else{%>
+            <p>Welcome, <%= username %></p>
+        <% }%>
+    </nav>
+   
+    <h1><img src="/images/album-collector.svg" alt="Album Collector"></h1>
+</header>

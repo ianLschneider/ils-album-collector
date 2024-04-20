@@ -1,0 +1,27 @@
+<%- include ('./partials/head.ejs') %>
+<body>
+    <header class="show">
+        <nav>
+            <a href="/albums/">&lt; Back</a>
+        </nav>
+    </header>
+    <main class="limit container show">
+        <div class="album">
+            <div class="card-top">
+                <img class="album-img" src="<%= album.image.path %>">
+                <h2><%= album.name %></h2>
+                <p><%= album.description %></p>
+                
+            </div>
+            
+            <div class="album-btns">
+                <a href="/albums/<%= album.id %>/edit" class="album-btn">Edit</a>
+
+                <form action="/albums/<%= album.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" class="album-btn">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

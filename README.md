@@ -1,1 +1,1 @@
-# ils-album-collector
+# album-collector
